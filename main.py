@@ -8,25 +8,16 @@ class MainClass(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.setupUi(self)
         self.setWindowTitle('Программа помощник')
-        self.pushButton.clicked.connect(self.choose_operator_1)
-        self.pushButton_2.clicked.connect(self.choose_operator_2)
-        self.pushButton_3.clicked.connect(self.choose_operator_3)
+        self.pushButton.clicked.connect(lambda: self.choose_operator(page_index=1, button=self.pushButton))
+        self.pushButton_2.clicked.connect(lambda: self.choose_operator(page_index=1, button=self.pushButton_2))
+        self.pushButton_3.clicked.connect(lambda: self.choose_operator(page_index=1, button=self.pushButton_3))
+        self.pushButton_4.clicked.connect(lambda: self.choose_operator(page_index=1, button=self.pushButton_4))
         self.pushButton_5.clicked.connect(self.get_new_task)
-        self.pushButton_4.clicked.connect(self.choose_operator_4)
 
-    def choose_operator_1(self):
-        self.stackedWidget.setCurrentIndex(1)
-        self.textBrowser.append(self.pushButton.text())
+    def choose_operator(self, page_index, button):
+        self.stackedWidget.setCurrentIndex(page_index)
+        self.textBrowser.append(button.text())
 
-    def choose_operator_2(self):
-        self.stackedWidget.setCurrentIndex(1)
-        self.textBrowser.append(self.pushButton_2.text())
-
-    def choose_operator_3(self):
-        self.textBrowser.append(self.pushButton_3.text())
-
-    def choose_operator_4(self):
-        self.textBrowser.append(self.pushButton_4.text())
 
     def get_new_task(self):
         self.stackedWidget.setCurrentIndex(0)
